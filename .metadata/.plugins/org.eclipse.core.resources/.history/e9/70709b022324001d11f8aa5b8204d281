@@ -1,0 +1,23 @@
+package WebPages;
+
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class HomePage {
+
+	protected WebDriver driver;
+
+	public HomePage(WebDriver driver){
+    this.driver = driver;
+    }
+
+	private By SignInField = By.xpath("//a[contains(@class, 'login')]");
+  
+	public void clickSignInButton() {
+		//Click button
+	    driver.findElement(SignInField).click();
+	    
+	}
+	  
+}

@@ -1,0 +1,13 @@
+Background:
+* url 'https://reqres.in/api'
+* header Accept = 'application/json'
+* def expectedOutput = read("responsePost.json")
+
+#Put request:  
+    Scenario: PUT request
+    Given url 'https://reqres.in/api/users/2'
+    And request {"name": "morpheus","job": "zion resident"}
+    When method PUT
+    Then status 200
+    And print response
+    

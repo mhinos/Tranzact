@@ -1,0 +1,7 @@
+{
+	"name": "morpheus", 
+	"job": "leader",
+	"id": "#string",
+	"createdAt": "#ignore"
+}
+

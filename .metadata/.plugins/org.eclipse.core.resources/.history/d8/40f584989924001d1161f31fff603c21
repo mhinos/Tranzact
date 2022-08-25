@@ -1,0 +1,62 @@
+Feature: Tranzact automation testing API
+  
+  Background: 
+    * url 'http://api.countrylayer.com/v2'
+    * header Accept = 'application/json'
+    * def expectedOutputUS = read("responseUS.json")
+    * def expectedOutputDE = read("responseDE.json")
+    * def expectedOutputGB = read("responseGB.json")
+    * def expectedOutPutrequest = read("responsePost.json")
+    * def expectedOutNotFound = read("responseNotFound.json")
+    
+      
+  	#Simple get request for US
+  Scenario: Get only USA
+    Given path '/name/United States of America'
+    And param access_key = '6a90841bb1015b2a36ad776addbff791'
+    When method GET
+    Then status 200
+    And print response
+    And match response  == expectedOutputUS
+ 
+    
+  #Simple get request for DE
+  Scenario: Get only Germany
+    Given path '/name/Germany'
+    And param access_key = '6a90841bb1015b2a36ad776addbff791'
+    When method GET
+    Then status 200
+    And match response  == expectedOutputDE
+    
+  #Simple get request for GB
+  Scenario: Get only GB
+    Given path '/name/United Kingdom of Great Britain and Northern Ireland'
+    And param access_key = '6a90841bb1015b2a36ad776addbff791'
+    When method GET
+    Then status 200
+    And match response  == expectedOutputGB
+   
+  
+  #Post request - Happy path : with read response from file
+  Scenario: Post request
+    Given url 'http://api.countrylayer.com/v2'
+    And request {name: "Test Country",alpha2_code: "TC",alpha3_code: "TCY"}
+    And param access_key = '6a90841bb1015b2a36ad776addbff791'
+    When method Post
+    Then status 200
+    And print response
+    And match response  == expectedOutPutrequest
+ 
+  
+  #Try to get information for inexistent countries and validate the response
+  Scenario: Get unexistent country
+    Given url 'http://api.countrylayer.com/v2/name/MFHV'
+    And param access_key = '53fbf20bab9f9209cfb843a1d2cff194'
+    When method GET
+    Then status 404
+    And print response
+    And match response == expectedOutNotFound
+    
+    
+    
+    

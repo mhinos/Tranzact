@@ -1,0 +1,27 @@
+package WebPages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class HomePage {
+
+	protected WebDriver driver;
+
+	  // <input name="user_name" type="text" value="">
+	  private By EmailField = By.xpath("//input[contains(@id, 'email_create')]");
+	  // <input name="password" type="password" value="">
+	  private By passwordBy = By.name("password");
+	  // <input name="sign_in" type="submit" value="SignIn">
+	  private By signinBy = By.name("sign_in");
+
+	  public HomePage(WebDriver driver){
+	    this.driver = driver;
+	  }
+
+	  public HomePage loginValidUser(String userName, String password) {
+
+	    
+	    return new HomePage(driver);
+	  }
+	  
+}

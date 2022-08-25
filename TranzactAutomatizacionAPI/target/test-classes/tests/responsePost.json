@@ -1,0 +1,19 @@
+{
+	"name": "Test Country",
+	"topLevelDomain": [
+            "#ignore"
+        ],
+	"alpha2_code": "TC",
+	"alpha3_code": "TCY",
+	"callingCodes": [
+            "#ignore"
+        ],
+        "capital": "#ignore",
+        "altSpellings": [
+            "#ignore"
+        ],
+        "region": "#ignore"
+}
+
+
+

@@ -1,0 +1,35 @@
+Feature: Tranzact automation testing API
+  
+  Background: 
+    * url 'http://api.countrylayer.com/v2'
+    * header Accept = 'application/json'
+    * def expectedOutputUS = read("responseUS.json")
+    * def expectedOutputDE = read("responseDE.json")
+    * def expectedOutputGB = read("responseGB.json")
+    
+ 
+    
+  #Simple get request for DE
+  Scenario: Get only Germany
+    Given path '/name/Germany'
+    And param access_key = '6a90841bb1015b2a36ad776addbff791'
+    When method GET
+    Then status 200
+    And match response  == expectedOutputDE
+    And assert response.data.length == 6
+    
+  #Simple get request for GB
+  Scenario: Get only GB
+    Given path '/name/United Kingdom of Great Britain and Northern Ireland'
+    And param access_key = '6a90841bb1015b2a36ad776addbff791'
+    When method GET
+    Then status 200
+    And match response  == expectedOutputGB
+    
+ 
+  #Try to get information for inexistent countries and validate the response
+  #Scenario: Get all countries
+  #  Given url 'http://api.countrylayer.com/v2/allaaaaaa'
+  #  And param access_key = '53fbf20bab9f9209cfb843a1d2cff194'
+  #  When method GET
+  #  Then status 200

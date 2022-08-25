@@ -1,0 +1,13 @@
+1.- La automatizacion API ha sido realizada con el framework Karate
+
+2.- Lo ideal, seria ejecutar el archivo TestRunner con JUNIT para ejecutar todos los features. Sin embargo, al hacerlo, la pagina me generaba error
+indicando que superaba el limite por usuario. La solucion temporal que pude encontrar es ejecutando los feature de manera independiente.
+Otra solucion podria ser obtener el access_key entre cada ejecucion, y verificar si se ha excedido el limite. De ser asi, resetear el valor para
+obtener uno nuevo y continuar con la ejecucion.
+
+3.- A nivel de ejecucion, se suele utilizar algun tag para solo ejecutar ciertos escenarios. Este script no contempla eso.
+
+4.- Todos los feature validan el response con su clase json correspondiente. 
+
+5.- El body del POST request del ejemplo solo tiene 3 valores. Sin embargo, asumiendo los Get request, inclui los demas campos y opte por omitirlos 
+en la validacion.

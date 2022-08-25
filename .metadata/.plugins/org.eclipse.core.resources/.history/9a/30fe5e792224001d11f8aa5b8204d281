@@ -1,0 +1,64 @@
+package WebPages;
+
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class CreateAccountPage {
+
+	protected WebDriver driver;
+
+	public CreateAccountPage(WebDriver driver){
+		this.driver = driver;
+	}
+	  
+	private By FirstName = By.xpath("//input[contains(@id, 'customer_firstname')]");
+	private By LastName = By.xpath("//input[contains(@id, 'customer_lastname')]");
+	private By Password = By.xpath("//input[contains(@id, 'passwd')]");
+	
+	public void enterFirstName() {
+		//Fill email address
+		String name = RandomStringUtils.randomAlphabetic(6); 
+		driver.findElement(FirstName).sendKeys(name);
+	}
+	
+	public void enterLastName() {
+		String lastName = RandomStringUtils.randomAlphabetic(6); 
+		driver.findElement(LastName).sendKeys(lastName);
+	}
+	public void selectState() {
+		WebElement state = driver.findElement(By.id("id_state"));
+		Select selectObject = new Select(state);
+		selectObject.selectByVisibleText("Arizona");
+	}
+	public void enterPassword() {
+		String password = RandomStringUtils.randomAlphanumeric(8);
+		driver.findElement(Password).sendKeys(password);
+	}
+	/*
+	//Wait for page to Load
+	wait.until(ExpectedConditions.presenceOfElementLocated (By.xpath("//input[contains(@id, 'customer_firstname')]")));
+
+	
+	
+	//Input Address
+	String addressText = RandomStringUtils.randomAlphanumeric(9);
+	String addressNumber = RandomStringUtils.randomNumeric(3);
+	driver.findElement(By.xpath("//input[contains(@id, 'address1')]")).sendKeys(addressText + ' ' + addressNumber);
+	//Input City
+	String City = RandomStringUtils.randomAlphabetic(7); 
+	driver.findElement(By.xpath("//input[contains(@id, 'city')]")).sendKeys(City);
+	//Input PostCode
+	String PostCode = RandomStringUtils.randomNumeric(5);
+	driver.findElement(By.xpath("//input[contains(@id, 'postcode')]")).sendKeys(PostCode);
+	//Input PhoneNumber
+	String PhoneNumber = RandomStringUtils.randomNumeric(9);
+	driver.findElement(By.xpath("//input[contains(@id, 'phone')]")).sendKeys(PhoneNumber);
+	//Click *Register* button
+	driver.findElement(By.xpath("//div[contains(@class, 'submit clearfix')]/button")).click();
+		*/	
+}

@@ -1,0 +1,33 @@
+Feature: Tranzact automation testing API
+
+  Background: 
+    * url 'https://reqres.in/api'
+    * header Accept = 'application/json'
+    * def expectedOutput = read("responsePost.json")
+
+  #Post request- Negative Scenario : Fail because ID and createdAt timestamp will not match.
+  Scenario: Post request
+    Given url 'https://reqres.in/api/users'
+    And request {"name": "morpheus","job": "leader"}
+    When method Post
+    Then status 201
+    And print response
+    And match response  == {"name": "morpheus", "job": "leader","id": "154","createdAt": "2022-08-25T05:42:45.827Z"}
+
+  #Post request - Happy path : with assertions
+  Scenario: Post request
+    Given url 'https://reqres.in/api/users'
+    And request {"name": "morpheus","job": "leader"}
+    When method Post
+    Then status 201
+    And print response
+    And match response  == {"name": "morpheus", "job": "leader","id": "#string","createdAt": "#ignore"}
+
+  #Post request - Happy path : with read response from file
+  Scenario: Post request
+    Given url 'https://reqres.in/api/users'
+    And request {"name": "morpheus","job": "leader"}
+    When method Post
+    Then status 201
+    And print response
+    And match response  == expectedOutput

@@ -1,0 +1,18 @@
+[ {
+    "name": "United States of America",
+    "topLevelDomain": [
+      ".us"
+    ],
+    "alpha2Code": "US",
+    "alpha3Code": "USA",
+    "callingCodes": [
+      "1"
+    ],
+    "capital": "Washington, D.C.",
+    "altSpellings": [
+      "US",
+      "USA",
+      "United States of America"
+    ],
+    "region": "Americas"
+}]

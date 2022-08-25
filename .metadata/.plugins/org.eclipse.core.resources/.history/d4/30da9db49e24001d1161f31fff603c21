@@ -1,0 +1,7 @@
+1.- El script a veces fallaba por el "select" de State. Tuve que poner un thread.sleep (que no es lo ideal), pero por temas de tiempo no pude
+profundizar en algun WaitForElement.
+
+2.- El formulario ha sido llenado con datos aleatorios por excepcion del Estado que ha sido "hardcodeado". En un script convencional este valor
+deberia estar parametrizado por Caso de Prueba o como input (ya sea por SQL, mongodb, archivo excel, etc)
+
+3.- Es un proyecto Maven. Por lo tanto, las librerias utilizadas estan dentro del pom

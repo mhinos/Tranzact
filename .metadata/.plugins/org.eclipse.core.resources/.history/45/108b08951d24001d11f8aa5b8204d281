@@ -1,0 +1,29 @@
+package WebPages;
+
+import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class HomePage {
+
+	protected WebDriver driver;
+
+	  // <input name="user_name" type="text" value="">
+	  private By EmailField = By.xpath("//input[contains(@id, 'email_create')]");
+
+	  public HomePage(WebDriver driver){
+	    this.driver = driver;
+	  }
+
+	  public HomePage loginValidUser(String userName, String password) {
+			//Fill email address
+			String emailText = RandomStringUtils.randomAlphanumeric(9);
+			String emailNumber = RandomStringUtils.randomNumeric(3);  
+		    driver.findElement(EmailField).sendKeys(emailText + emailNumber + "@gmail.com");
+		    //Click Create account button
+			driver.findElement(By.xpath("//div[contains(@class, 'submit')]/button")).click();
+	    
+	    return new HomePage(driver);
+	  }
+	  
+}

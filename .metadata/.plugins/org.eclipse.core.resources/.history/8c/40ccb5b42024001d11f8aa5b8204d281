@@ -1,0 +1,118 @@
+package Main;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import WebPages.HomePage;
+import WebPages.SignInPage;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+//import org.openqa.selenium.support.ui.WebDriverWait;
+//import java.util.UUID;
+import org.apache.commons.lang.RandomStringUtils;
+import org.junit.Assert;
+
+public class Main {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "/Users/mfhv/Documents/Drivers/chromedriver");
+		WebDriver driver = new ChromeDriver();
+		//Open Home Page
+		driver.get("http://automationpractice.com/");
+		//Maximizar pantalla
+		driver.manage().window().maximize();
+		
+		//WebDriverWait wait = new WebDriverWait(driver,30);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		/*
+		//Click Sign in button
+		driver.findElement(By.xpath("//a[contains(@class, 'login')]")).click();
+		
+		//Fill email address
+		String emailText = RandomStringUtils.randomAlphanumeric(9);
+		String emailNumber = RandomStringUtils.randomNumeric(3);
+		driver.findElement(By.xpath("//input[contains(@id, 'email_create')]")).sendKeys(emailText + emailNumber + "@gmail.com");
+		//Click Create account button
+		driver.findElement(By.xpath("//div[contains(@class, 'submit')]/button")).click();
+		//Wait for page to Load
+		wait.until(ExpectedConditions.presenceOfElementLocated (By.xpath("//input[contains(@id, 'customer_firstname')]")));
+		//Fill all fields with correct data
+		String name = RandomStringUtils.randomAlphabetic(6); 
+		driver.findElement(By.xpath("//input[contains(@id, 'customer_firstname')]")).sendKeys(name);
+		
+		String lastname = RandomStringUtils.randomAlphabetic(6); 
+		driver.findElement(By.xpath("//input[contains(@id, 'customer_lastname')]")).sendKeys(lastname);
+		//Select State: Hardcode Arizona
+		Thread.sleep(2000);
+		wait.until(ExpectedConditions.presenceOfElementLocated (By.id("id_state")));
+		WebElement State = driver.findElement(By.id("id_state"));
+		Select selectObject = new Select(State);
+		selectObject.selectByVisibleText("Arizona");
+		////VERIFICAR EL CORREO
+		//Input Password
+		String password = RandomStringUtils.randomAlphanumeric(8);
+		driver.findElement(By.xpath("//input[contains(@id, 'passwd')]")).sendKeys(password);
+		
+		//Input Address
+		String addressText = RandomStringUtils.randomAlphanumeric(9);
+		String addressNumber = RandomStringUtils.randomNumeric(3);
+		driver.findElement(By.xpath("//input[contains(@id, 'address1')]")).sendKeys(addressText + ' ' + addressNumber);
+		//Input City
+		String City = RandomStringUtils.randomAlphabetic(7); 
+		driver.findElement(By.xpath("//input[contains(@id, 'city')]")).sendKeys(City);
+		//Input PostCode
+		String PostCode = RandomStringUtils.randomNumeric(5);
+		driver.findElement(By.xpath("//input[contains(@id, 'postcode')]")).sendKeys(PostCode);
+		//Input PhoneNumber
+		String PhoneNumber = RandomStringUtils.randomNumeric(9);
+		driver.findElement(By.xpath("//input[contains(@id, 'phone')]")).sendKeys(PhoneNumber);
+		//Click *Register* button
+		driver.findElement(By.xpath("//div[contains(@class, 'submit clearfix')]/button")).click();
+		
+		//WaitFor Page to load
+		wait.until(ExpectedConditions.presenceOfElementLocated (By.xpath("//h1[contains(@class, 'page-heading')]")));
+		//Assert Title Page
+		String ActualTitle = driver.getTitle();
+		String ExpectedTitle = "My account - My Store";
+		Assert.assertEquals(ActualTitle,ExpectedTitle);
+		//Assert User Name
+		String UserName = name + " " + lastname;
+		String temporal = driver.findElement(By.xpath("//div[contains(@class, 'header_user_info')]/a/span")).getText();
+		Assert.assertEquals(UserName,temporal);
+		//Assert Logout
+		String LogOut = driver.findElement(By.xpath("//a[contains(@class, 'logout')]")).getText();
+		Assert.assertEquals("Sign out",LogOut);
+		
+		*/
+
+		
+		//Creating object of Home page
+		HomePage home = new HomePage(driver);
+		home.clickSignInButton();
+		
+		//Creating object of SignInPage
+		SignInPage signIn = new SignInPage(driver);
+		signIn.enterEmailAddress();
+		signIn.clickSubmitButton();
+		//Creating object of CreateAccount page
+		CreateAccountPage createAccount = new CreateAccountPage(driver);
+		
+		//Fill all fields with correct data
+		//Creating object of MyAccount page
+		//MyAccount myAccount = new MyAccount(driver);
+		
+		
+		driver.quit();
+	}
+
+}

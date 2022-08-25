@@ -1,0 +1,40 @@
+Feature: Tranzact automation testing API
+  
+  Background: 
+    * url 'http://api.countrylayer.com/v2'
+    * header Accept = 'application/json'
+    * def expectedOutput = read("responsePost.json")
+    
+ 
+  	#Simple get request
+  Scenario: Get only USA2
+    Given path '/name/United States of America'
+    And param access_key = '53fbf20bab9f9209cfb843a1d2cff194'
+    When method GET
+    Then status 200
+    And print response
+    And assert response.data[0].name == 'United States of America'
+ 
+
+    
+  #Simple get request
+  Scenario: Get only Germany
+    Given path '/name/Germany'
+    And param access_key = '53fbf20bab9f9209cfb843a1d2cff194'
+    When method GET
+    Then status 200
+    
+  #Simple get request
+  Scenario: Get only USA
+    Given path '/name/United Kingdom of Great Britain and Northern Ireland'
+    And param access_key = '53fbf20bab9f9209cfb843a1d2cff194'
+    When method GET
+    Then status 200
+    
+ 
+   #Simple get request
+  Scenario: Get all countries
+    Given url 'http://api.countrylayer.com/v2/allaaaaaa'
+    And param access_key = '53fbf20bab9f9209cfb843a1d2cff194'
+    When method GET
+    Then status 200
