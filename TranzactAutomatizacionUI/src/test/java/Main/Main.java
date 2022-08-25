@@ -23,7 +23,6 @@ public class Main {
 		//Maximizar pantalla
 		driver.manage().window().maximize();
 		
-		//WebDriverWait wait = new WebDriverWait(driver,30);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		//Creating object of Home page
@@ -37,7 +36,6 @@ public class Main {
 		CreateAccountPage createAccount = new CreateAccountPage(driver);
 		
 		//Fill all fields with correct data
-		//Thread.sleep(4000);
 		wait.until(ExpectedConditions.presenceOfElementLocated (By.xpath("//input[contains(@id, 'customer_firstname')]")));
 		String Name = createAccount.enterFirstName();
 		String LastName = createAccount.enterLastName();
@@ -53,6 +51,8 @@ public class Main {
 		
 		//Creating object of MyAccount page
 		MyAccountPage myAccount = new MyAccountPage(driver);
+		String URL = driver.getCurrentUrl();
+		myAccount.verifyURL(URL);
 		String ActualTitle = driver.getTitle();
 		myAccount.verifyTitle(ActualTitle);
 		myAccount.verifyUserName(Name, LastName);

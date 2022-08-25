@@ -1,0 +1,12 @@
+1.- API Automation has been done with Framework Karate
+
+2.- Ideally, it would be better to run the TestRunner file with JUNIT to run all the features. However, when I did that, the page generated an error
+indicating that it exceeded the limit per user. The temporary solution that I could find is running the features independently.
+Another solution could be to get the access_key between each execution, and check if the limit has been exceeded. If so, reset the value to
+get a new one and continue running.
+
+3.- At execution level, its common to create tags so the script only runs the selected ones and not necessary all of them.
+
+4. All the feature validate the response with its linked json file
+
+5.- BODY of the POST request only have 3 values. However, assuming the GET request, I added the other missing fields and decided to ignore them. 

@@ -13,15 +13,15 @@ public class CreateAccountPage {
 	public CreateAccountPage(WebDriver driver){
 		this.driver = driver;
 	}
-	  
-	private By FirstName = By.xpath("//input[contains(@id, 'customer_firstname')]");
-	private By LastName = By.xpath("//input[contains(@id, 'customer_lastname')]");
-	private By Password = By.xpath("//input[contains(@id, 'passwd')]");
-	private By Address = By.xpath("//input[contains(@id, 'address1')]");
-	private By City = By.xpath("//input[contains(@id, 'city')]");
-	private By PostCode = By.xpath("//input[contains(@id, 'postcode')]");
-	private By PhoneNumber = By.xpath("//input[contains(@id, 'phone')]");
-	private By RegisterButton = By.xpath("//div[contains(@class, 'submit clearfix')]/button");
+	 
+	private By FirstName = By.id("customer_firstname");
+	private By LastName = By.id("customer_lastname");
+	private By Password = By.id("passwd");
+	private By Address = By.id("address1");
+	private By City =By.id("city"); 
+	private By PostCode = By.id("postcode");
+	private By PhoneNumber = By.id("phone");
+	private By RegisterButton = By.id("submitAccount");
 	
 	public String enterFirstName() {
 		//Fill email address
@@ -74,11 +74,5 @@ public class CreateAccountPage {
 	public void clickRegisterButton() {
 		//Click *Register* button
 		driver.findElement(RegisterButton).click();
-	}
-	
-	/*
-	//Wait for page to Load
-	wait.until(ExpectedConditions.presenceOfElementLocated (By.xpath("//input[contains(@id, 'customer_firstname')]")));
-
-	*/	
+	}	
 }

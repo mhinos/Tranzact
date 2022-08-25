@@ -11,10 +11,14 @@ public class MyAccountPage {
     this.driver = driver;
     }
 
-	private By HeaderUserInfo = By.xpath("//div[contains(@class, 'header_user_info')]/a/span");
-	private By LogOutDiv = By.xpath("//div[contains(@class, 'header_user_info')]/a/span");
+	private By HeaderUserInfo = By.xpath("//div[contains(@class, 'row')]/nav/div[1]/a/span");
+	private By LogOutDiv = By.xpath("//div[contains(@class, 'row')]/nav/div[2]/a");
 	
-	
+	public void verifyURL(String ActualURL) {
+		//Assert URL
+		String ExpectedURL = "http://automationpractice.com/index.php?controller=my-account";
+		Assert.assertEquals(ActualURL,ExpectedURL);  
+	}
 	public void verifyTitle(String ActualTitle) {
 		//Assert Title Page
 		String ExpectedTitle = "My account - My Store";
@@ -31,4 +35,6 @@ public class MyAccountPage {
 		String LogOut = driver.findElement(LogOutDiv).getText();
 		Assert.assertEquals("Sign out",LogOut);
 	}
+	
+	
 }

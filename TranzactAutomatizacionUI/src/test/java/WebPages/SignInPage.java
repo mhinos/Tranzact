@@ -12,7 +12,7 @@ public class SignInPage {
 	    this.driver = driver;
 	  }
 	  
-	 private By EmailField = By.xpath("//input[contains(@id, 'email_create')]");
+	 private By EmailField = By.id("email_create");
 	  
 	 public void enterEmailAddress() {
 			//Fill email address
@@ -24,6 +24,6 @@ public class SignInPage {
 	  
 	  public void clickSubmitButton() {
 		//Click Create account button
-		driver.findElement(By.xpath("//div[contains(@class, 'submit')]/button")).click();  
+		driver.findElement(By.id("SubmitCreate")).click();  
 	  }
 }

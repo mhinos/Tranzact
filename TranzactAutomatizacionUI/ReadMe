@@ -1,0 +1,10 @@
+1.- The script failed randomly because of the "Select" Element. I had to add a Thread.sleep (not recommended),  because I am 
+running out of time and couldn't research deeper into a better solution like a WaitForElement. That line is commented Main.java Line43.
+
+2.- The form has been filled with random data for the exception of the State. On a conventional script, this value should be selected randomly 
+(Maybe Index >0) or as an input from the Test Case (either from dataBase SQL, Excel File or so others).
+
+3.- Its a Maven project. Therefore, all the libraries used are within the POM file.
+
+4.- After the script assert some fileds, it ends with a simple PrintLN on the console. It could have been better to at a printScreen at some 
+points as evidence.
